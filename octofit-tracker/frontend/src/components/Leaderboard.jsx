@@ -2,7 +2,7 @@ import CollectionStatus from './CollectionStatus.jsx'
 import { useApiCollection } from '../hooks/useApiCollection.js'
 
 function Leaderboard() {
-  const { items, loading, error } = useApiCollection('/api/leaderboard/')
+  const { items, loading, error } = useApiCollection('/api/leaderboard/', fetch)
 
   return (
     <section>

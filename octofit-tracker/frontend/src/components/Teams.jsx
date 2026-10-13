@@ -2,7 +2,7 @@ import CollectionStatus from './CollectionStatus.jsx'
 import { useApiCollection } from '../hooks/useApiCollection.js'
 
 function Teams() {
-  const { items, loading, error } = useApiCollection('/api/teams/')
+  const { items, loading, error } = useApiCollection('/api/teams/', fetch)
 
   return (
     <section>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from '../api.js'
 
-export function useApiCollection(path) {
+export function useApiCollection(path, fetcher) {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -9,7 +9,7 @@ export function useApiCollection(path) {
   useEffect(() => {
     const controller = new AbortController()
 
-    fetchCollection(path, { signal: controller.signal })
+    fetchCollection(path, { signal: controller.signal, fetcher })
       .then((collection) => {
         setItems(collection)
         setError('')
@@ -24,7 +24,7 @@ export function useApiCollection(path) {
       })
 
     return () => controller.abort()
-  }, [path])
+  }, [path, fetcher])
 
   return { items, loading, error }
 }

@@ -2,7 +2,7 @@ import CollectionStatus from './CollectionStatus.jsx'
 import { useApiCollection } from '../hooks/useApiCollection.js'
 
 function Activities() {
-  const { items, loading, error } = useApiCollection('/api/activities/')
+  const { items, loading, error } = useApiCollection('/api/activities/', fetch)
 
   return (
     <section>
